@@ -1,11 +1,17 @@
 from Testjgw import indexing
 from collections import defaultdict
+import pickle
+
 pathss=["Grundgesetz"]
 index={}
-for x in pathss:
+try:
+    with open("index.pickel","rb") as file:
+        index=pickle.load(file)
+except:
+    for x in pathss:
 
-    index=indexing(x)
-    print (index)
+        index=indexing(x)
+        print (index)
 
 sa = input ("Geben sie eie Suchanfrage ein\n ")
 sa = sa.split(" ")          #stemming
