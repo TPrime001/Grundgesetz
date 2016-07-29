@@ -3,6 +3,7 @@ from collections import defaultdict
 pathss=["Grundgesetz"]
 index={}
 for x in pathss:
+
     index=indexing(x)
     print (index)
 

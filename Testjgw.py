@@ -9,6 +9,7 @@ import re
 import nltk.stem.snowball as snow
 
 from collections import defaultdict
+import pickle as pi
 def Index(data):
     integer = 0
     indexdict = defaultdict(set)
@@ -69,6 +70,9 @@ def indexing(path):
 
 
     print(counter)
+    with open("index.pickel","wb") as file:
+
+        pi.dump (Index(satz),file)
     return (Index(satz))
 
 
