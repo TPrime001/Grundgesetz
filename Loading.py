@@ -19,6 +19,7 @@ words= len(sa)
 resultlist=[]
 import nltk.stem.snowball as snow
 
+
 for wort in sa:
     stemmer = snow.GermanStemmer()
     wortt=stemmer.stem(wort)
