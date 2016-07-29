@@ -14,4 +14,3 @@ def token (text):
 
     return new_list
 
-print(token("hallo ich heiße der die das ist cool ja gell"))
