@@ -4,8 +4,9 @@ import pickle
 
 pathss=["Grundgesetz"]
 index={}
+
 try:
-    with open("index.pickel","rb") as file:
+    with open("index"+".pickel","rb") as file:
         index=pickle.load(file)
 except:
     for x in pathss:
@@ -35,3 +36,5 @@ liste=list(sorted(dicte, key=dicte.get,reverse=True))
 print (liste)
 if len(liste)>0:
     print("Best article ist... Art. "+str(liste[0]))
+else:
+    print("No entry found")

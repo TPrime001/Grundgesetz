@@ -73,6 +73,7 @@ def indexing(path):
     with open("index.pickel","wb") as file:
 
         pi.dump (Index(satz),file)
+
     return (Index(satz))
 
 
