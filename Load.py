@@ -17,12 +17,14 @@ def loadAndStem(path):
     for doc in docs:
         print("....")
         stemmend.append(process(doc))
+
+
     preindeex=defaultdict(dict)
     print("40%")
     for id,doc in enumerate (stemmend):
         print("....")
         for wort in doc:
-            if len(preindeex[wort]["list"])==0:
+            if preindeex[wort].get("list",1):
 
                 preindeex[wort]["list"]=[id+1]
             else:
@@ -42,12 +44,15 @@ def loadAndStem(path):
                 new_dict[docid]+=1
         preindeex[key]["list"]= new_dict
     print ("90%")
-    pickle.dump(saved(preindeex,0),"indexing.pickle")
+    with open("indexing.pickel", "wb") as file:
+
+        pickle.dump(saved(preindeex,0),file)
     print ("100%")
+    print (preindeex)
 
 class saved (object):
     def __init__(self,index,tf):
         self.index= index
-        self.tf
+        self.tf=tf
 
 loadAndStem("enmarveldatabase_pages_current.json.gz")
