@@ -4,6 +4,7 @@ from prepreprocess import token as process
 import math
 import pickle
 from collections import defaultdict
+
 def loadAndStem(path):
     data = load(path)
     docs=[]
@@ -13,10 +14,15 @@ def loadAndStem(path):
         titels.append(doc["title"])
     stemmend=[]
     N= len(titels)
+    loadlimit =N
     print ("5%")
+    i=0
     for doc in docs:
+        i+=1
         print("....")
         stemmend.append(process(doc))
+        if i==loadlimit:
+            break
 
 
     preindeex=defaultdict(dict)
@@ -35,7 +41,7 @@ def loadAndStem(path):
         for doc in preindeex[key]["list"]:
             integer+=1
         preindeex[key]["ntd"]= [integer]
-        preindeex[key]["idf"] = [math.log(integer/N,10)]
+        preindeex[key]["idf"] = [math.log(N/integer,10)]
     print ("60%")
     for key in preindeex:
         new_dict=defaultdict(int)
@@ -43,10 +49,20 @@ def loadAndStem(path):
 
                 new_dict[docid]+=1
         preindeex[key]["list"]= new_dict
+    tfmax=defaultdict(list)
+    for keys in preindeex:
+        for doc_id in preindeex[keys]["list"]:
+            if len(tfmax[doc_id])==0:
+                tfmax[doc_id].append(preindeex[keys]["list"][doc_id])
+                tfmax[doc_id].append(keys)
+            elif  tfmax[doc_id][0] <preindeex[keys]["list"][doc_id]:
+                tfmax[doc_id][0]=( preindeex[keys]["list"][doc_id])
+                tfmax[doc_id][1]=( keys)
+    print (tfmax)
     print ("90%")
     with open("indexing.pickel", "wb") as file:
 
-        pickle.dump(saved(preindeex,0),file)
+        pickle.dump(saved(preindeex,tfmax),file)
     print ("100%")
     print (preindeex)
 

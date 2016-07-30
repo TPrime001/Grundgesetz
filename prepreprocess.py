@@ -1,10 +1,10 @@
 import nltk.stem.snowball as snow
 import nltk
-
+import re
 
 
 def token (text):
-    new_text = nltk.word_tokenize(text)
+    new_text =  re.findall('[\w-]+', text)
 
     stemmer = snow.EnglishStemmer()
     new_list=[]
