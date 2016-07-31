@@ -1,6 +1,6 @@
 from load_dataset import load_wikidata as load
 from load_dataset import clean_wikidata as clean
-from prepreprocess import preprocess as process
+from prepreprocess import preprocesss as process
 import math
 import pickle
 from collections import defaultdict
