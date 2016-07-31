@@ -56,11 +56,13 @@ def search():
         dicte[list(result_list)[inte]]= rating[inte]
     sort= sorted(dicte, key=dicte.get,reverse=True)
     integ=1
-    for item in sort:
+    sortedkeys=sorted(rating)
+    for intege,item in enumerate(sort):
         print ("Position"+ str(integ))
         integ+=1
         print ("Doc id : "+str(item))
         print ("Title : "+ str(titels[item -1]))
+        print ("Angle : "+str(math.acos(rating[intege])/math.pi*180)+"°")
 
 
 search()
