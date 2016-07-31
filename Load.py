@@ -40,8 +40,8 @@ def loadAndStem(path):
     for key in preindeex :
 
         m=len(preindeex[key]["list"])
-        preindeex[key]["ntd"]= [m]
-        preindeex[key]["idf"] = [math.log(N/m,10)]
+        preindeex[key]["ntd"]= m
+        preindeex[key]["idf"] = math.log(N/m,10)
     print ("60%")
     for keyss in preindeex:
         new_dict=defaultdict(int)
@@ -63,6 +63,7 @@ def loadAndStem(path):
     with open("indexing.pickel", "wb") as file:
 
         pickle.dump(saved(preindeex,tfmax),file)
+
     print ("100%")
     print (preindeex)
 
@@ -71,4 +72,4 @@ class saved (object):
         self.index= index
         self.tf=tf
 
-loadAndStem("enmarveldatabase_pages_current.json.gz")
+
