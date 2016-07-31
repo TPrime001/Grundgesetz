@@ -14,7 +14,7 @@ def loadAndStem(path):
         titels.append(doc["title"])
     stemmend=[]
     N= len(titels)
-    loadlimit =30
+    loadlimit =N
     print ("5%")
     i=0
     for doc in docs:
