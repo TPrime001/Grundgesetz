@@ -54,9 +54,13 @@ def search():
     dicte={}
     for inte in range(len(rating)):
         dicte[list(result_list)[inte]]= rating[inte]
-    sort= sorted(dicte, key=dicte.get(),reverse=True)
+    sort= sorted(dicte, key=dicte.get,reverse=True)
+    integ=1
     for item in sort:
-        print item
+        print ("Position"+ str(integ))
+        integ+=1
+        print ("Doc id : "+str(item))
+        print ("Title : "+ str(titels[item -1]))
 
 
 search()
