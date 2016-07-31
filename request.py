@@ -41,7 +41,7 @@ def search():
                 ska += new_index[word]["list"][doc_id] * new_index[word]["idf"]**2 /tf[doc_id][0]*new_index[word]["list"][doc_id]
                 prelen+=(new_index[word]["list"][doc_id] * new_index[word]["idf"]/tf[doc_id][0]*new_index[word]["list"][doc_id])**2
 
-                print (word, str(new_index[word]["list"][doc_id]))
+
             else:
                 continue
 
@@ -51,8 +51,13 @@ def search():
     if len(result_list) !=0:
         qqqlen=qqlen
         rating=skalar
-    print(result_list)
-    print(rating)
+    dicte={}
+    for inte in range(len(rating)):
+        dicte[list(result_list)[inte]]= rating[inte]
+    sort= sorted(dicte, key=dicte.get(),reverse=True)
+    for item in sort:
+        print item
+
 
 search()
 
