@@ -1,27 +1,33 @@
 import nltk
 import nltk.stem.snowball as snow
 from nltk.corpus import stopwords
-
+import re
 
 #tokenize creates list of words
 def tokenize (text):
-       new_text = nltk.word_tokenize(text)
-       return new_text
+
+        new_text = nltk.word_tokenize(text)
+        new_text1=[]
+        for item in new_text:
+            new_text1+=( re.findall('[\w]+', item))
+
+        return new_text1
 
 
 #stemming
-def stemming (new_text):
+def stemming (new_text2):
         stemmer = snow.EnglishStemmer()
         new_list=[]
-        for elements in new_text:
+        for elements in new_text2:
+
             new_list.append(stemmer.stem(elements))
         return new_list
 
 
 #stopword removal
-def stoppwords(new_list):
+def stoppwords(new_list2):
         stop = stopwords.words('english')
-        new_words = [word for word in new_list if word not in stop]
+        new_words = [word for word in new_list2 if word not in stop]
         return new_words
 
 def preprocesss(data):
