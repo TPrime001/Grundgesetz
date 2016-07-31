@@ -62,14 +62,14 @@ def loadAndStem(path):
     print ("90%")
     with open("indexing.pickel", "wb") as file:
 
-        pickle.dump(saved(preindeex,tfmax),file)
+        pickle.dump(saved(preindeex,tfmax,titels),file)
 
     print ("100%")
     print (preindeex)
 
 class saved (object):
-    def __init__(self,index,tf):
+    def __init__(self,index,tf,titelss):
         self.index= index
         self.tf=tf
-
+        self.titless=titelss
 
